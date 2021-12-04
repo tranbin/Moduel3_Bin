@@ -17,6 +17,7 @@ oTotalPrice int,
 cId int ,
 foreign key(cId) references Customer(cId)	
 );
+select * from `Order`;
 create table OrderDetail(
 odQTY int CHECK ( odQTY >= 1 ) ,
 oId int,
@@ -25,3 +26,4 @@ primary key(oId,pId),
 foreign key(oId) references `Order`(oId),
 foreign key(pId) references  Product(pId)
 );
+select * from OrderDetail;
