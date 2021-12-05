@@ -63,9 +63,12 @@ VALUES (1, 1, 8, 1),
 -- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2.
 -- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
 select * from student where StudentName like "h%";
-select * from class where StartDate like "%-12-%";
+select * from class where StartDate like "%12%";
 select * from subject where credit between 3 and 5;
 set SQL_SAFE_UPDATES = 0;
 update student set ClassID = 2 where StudentName = "Hung";
 set SQL_SAFE_UPDATES = 1; 
-select * from mark inner join student on student.StudentId = mark.SubId inner join subject on mark.SubId = subject.SubId order by mark;
+
+SELECT S.StudentId, S.StudentName, Sub.SubName, M.Mark
+FROM Student S join Mark M on S.StudentId = M.StudentId join Subject Sub on M.SubId = Sub.SubId order by mark;
+-- select * from mark inner join student on student.StudentId = mark.SubId inner join subject on mark.SubId = subject.SubId order by mark;
