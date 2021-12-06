@@ -9,7 +9,7 @@ select * from lop_hoc  right join hoc_vien on hoc_vien.ma_lop_hoc = lop_hoc.ma_l
 -- full join.
 select * from hoc_vien left join lop_hoc on hoc_vien.ma_lop_hoc = lop_hoc.ma_lop_hoc 
 union 
-select * from hoc_vien  right join lop_hoc on hoc_vien.ma_lop_hoc = lop_hoc.ma_lop_hoc;
+select * from hoc_vien right join lop_hoc on hoc_vien.ma_lop_hoc = lop_hoc.ma_lop_hoc;
 
 -- Yêu cầu 3: Lấy ra thông tin của học viên tên là TrungDC
 select * from hoc_vien where hoc_vien.username = "trungdc";
