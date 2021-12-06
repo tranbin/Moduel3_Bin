@@ -1,5 +1,5 @@
-create database quanlisinhvien_bt1;
-use quanlisinhvien_bt1;
+create database quanlisinhvien_s4;
+use quanlisinhvien_s4;
 CREATE TABLE Class
 (
     ClassID   INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -57,26 +57,20 @@ INSERT INTO Mark (SubId, StudentId, Mark, ExamTimes)
 VALUES (1, 1, 8, 1),
        (1, 2, 10, 2),
        (2, 1, 12, 1);
--- Hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’
 
-select * from student where StudentName like "h%";
 
--- Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12.
+-- Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất.
 
-select * from class where StartDate like "%12%";
+select subject.SubId, subject.SubName ,subject.Status, max(Credit) from subject ;
 
--- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5.
 
-select * from subject where credit between 3 and 5;
+-- Hiển thị các thông tin môn học có điểm thi lớn nhất.
 
--- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2.
+select subject.SubId, subject.SubName ,subject.Credit ,subject.Status,max(`mark`.mark) from subject join `mark` on subject.subid = `mark`.subid group by subject.subid ;
 
-set SQL_SAFE_UPDATES = 0;
-update student set ClassID = 2 where StudentName = "Hung";
-set SQL_SAFE_UPDATES = 1; 
+-- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, xếp hạng theo thứ tự điểm giảm dần
 
--- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
 
-SELECT S.StudentId, S.StudentName, Sub.SubName, M.Mark
-FROM Student S join Mark M on S.StudentId = M.StudentId join Subject Sub on M.SubId = Sub.SubId order by mark;
--- select * from mark inner join student on student.StudentId = mark.SubId inner join subject on mark.SubId = subject.SubId order by mark;
+SELECT Student.StudentId,Student.StudentName, AVG(`mark`.Mark)
+FROM Student join Mark  on Student.StudentId = Mark.StudentId
+group by `mark`.mark ;
