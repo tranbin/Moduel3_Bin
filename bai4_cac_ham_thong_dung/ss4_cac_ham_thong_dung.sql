@@ -21,18 +21,19 @@ select * from hoc_vien order by ngay_sinh desc limit 4,2;
 
 -- Yêu cầu: Lấy ra thông của lớp có học sinh tên là A;
 -- Cách 1:
+select * from hoc_vien;
 select * from lop_hoc inner join hoc_vien on 
-lop_hoc.ma_lop_hoc = hoc_vien.ma_lop_hoc where hoc_vien.ten_hoc_vien = "A";
+lop_hoc.ma_lop_hoc = hoc_vien.ma_lop_hoc where hoc_vien.ten_hoc_vien = "Huyen2";
 -- Cách 2:
 select * from lop_hoc where lop_hoc.ma_lop_hoc = 
-(select ma_lop_hoc from hoc_vien where hoc_vien.ten_hoc_vien = "A");
+(select ma_lop_hoc from hoc_vien where hoc_vien.ten_hoc_vien = "Huyen2");
 
 -- Yêu cầu: Lấy ra thông của lớp có học sinh tên là A;
 select * from lop_hoc where lop_hoc.ma_lop_hoc 
-in (select hoc_vien.ma_lop_hoc from hoc_vien where hoc_vien.ten_hoc_vien ="A");
+in (select hoc_vien.ma_lop_hoc from hoc_vien where hoc_vien.ten_hoc_vien ="Huyen2");
 
 select * from lop_hoc where exists(select hoc_vien.ma_lop_hoc from hoc_vien
-where hoc_vien.ten_hoc_vien = "A" and lop_hoc.ma_lop_hoc = hoc_vien.ma_lop_hoc);
+where hoc_vien.ten_hoc_vien = "Huyen2" and lop_hoc.ma_lop_hoc = hoc_vien.ma_lop_hoc);
 -- Chỉ nên sử dụng exists cho các trường hợp kiểm tra tồn tại hoặc không tồn tại
 
 -- Yêu câu hiển thị tất cả học có năm sinh là 1999;

@@ -29,4 +29,9 @@ group by ma_lop_hoc having number_hoc_vien >=2;
 -- Yêu cầu 5: Hiển thị tên tăng dần
 select * from hoc_vien order by username desc;
 
+-- btvn :Lấy ra thông tin của các học viên đang theo học tại lớp, và lớp đó do giảng viên nào dạy?. Bạn nào trả lời nhanh và đúng nhất thì +5k
+select ten_hoc_vien,ten_lop_hoc,ten_giang_vien from hoc_vien
+inner join lop_hoc on lop_hoc.ma_lop_hoc=hoc_vien.ma_lop_hoc
+inner join giang_vien_day_lop_hoc on giang_vien_day_lop_hoc.ma_lop_hoc=lop_hoc.ma_lop_hoc
+inner join giang_vien on giang_vien_day_lop_hoc.ma_giang_vien=giang_vien.ma_giang_vien;
 
