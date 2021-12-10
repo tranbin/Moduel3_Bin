@@ -40,3 +40,4 @@ where hoc_vien.ten_hoc_vien = "Huyen2" and lop_hoc.ma_lop_hoc = hoc_vien.ma_lop_
 -- Datedif() trừ 2 ngày với nhau -> tổng số ngày chênh lệch
 select * from hoc_vien where year(hoc_vien.ngay_sinh) ="1997";
 
+-- chưa hiểu về exist và truy vấn con ? 

@@ -66,11 +66,10 @@ select subject.SubId, subject.SubName ,subject.Status, max(Credit) from subject 
 
 -- Hiển thị các thông tin môn học có điểm thi lớn nhất.
 
-select subject.SubId, subject.SubName ,subject.Credit ,subject.Status,max(`mark`.mark) from subject join `mark` on subject.subid = `mark`.subid group by subject.subid ;
+select subject.SubId, subject.SubName ,subject.Credit ,subject.Status, max(`mark`.mark) from `subject` join `mark` on subject.subid = `mark`.subid;
 
 -- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, xếp hạng theo thứ tự điểm giảm dần
 
-
-SELECT Student.StudentId,Student.StudentName, AVG(`mark`.Mark)
+SELECT Student.StudentId,Student.StudentName, AVG(`mark`.Mark) as DTB
 FROM Student join Mark  on Student.StudentId = Mark.StudentId
-group by `mark`.mark ;
+group by Student.StudentID order by DTB desc;

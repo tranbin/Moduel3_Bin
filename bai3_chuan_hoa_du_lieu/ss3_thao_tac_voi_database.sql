@@ -12,10 +12,10 @@ union
 select * from hoc_vien right join lop_hoc on hoc_vien.ma_lop_hoc = lop_hoc.ma_lop_hoc;
 
 -- Yêu cầu 3: Lấy ra thông tin của học viên tên là TrungDC
-select * from hoc_vien where hoc_vien.username = "trungdc";
-
+select * from hoc_vien where hoc_vien.ten_hoc_vien = "Huyen2";
+select * from hoc_vien;
 -- Tìm kiếm thông tin của học viên có tên Trung trong username
-select * from hoc_vien where hoc_vien.username like "%t"; -- Kết thúc phải là trung
+select * from hoc_vien where hoc_vien.ten_hoc_vien like "H%"; -- Kết thúc phải là trung
 -- trung%: bắt đầu phải là chữ trung
 -- %trung% chỉ cần tồn tại chuỗi trung trong tên là được.
 
@@ -27,7 +27,7 @@ select count(ma_hoc_vien) as 'number_hoc_vien', ma_lop_hoc from hoc_vien
 group by ma_lop_hoc having number_hoc_vien >=2;
 
 -- Yêu cầu 5: Hiển thị tên tăng dần
-select * from hoc_vien order by username desc;
+select * from hoc_vien order by ten_hoc_vien desc;
 
 -- btvn :Lấy ra thông tin của các học viên đang theo học tại lớp, và lớp đó do giảng viên nào dạy?. Bạn nào trả lời nhanh và đúng nhất thì +5k
 select ten_hoc_vien,ten_lop_hoc,ten_giang_vien from hoc_vien
