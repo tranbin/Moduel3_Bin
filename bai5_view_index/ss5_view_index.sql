@@ -1,3 +1,4 @@
+use demo_a07;
 -- index
 explain select * from hoc_vien where ten_hoc_vien = "HaiTT";
 
