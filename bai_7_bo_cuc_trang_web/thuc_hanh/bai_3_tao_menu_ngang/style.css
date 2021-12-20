@@ -2,7 +2,7 @@ body{
     font-family: Arial;
 }
 
-#menu{
+#header{
     height: 30px;
     padding:0;
     margin:0;
@@ -10,12 +10,12 @@ body{
     border: 1px solid #CDCDCD;
 }
 
-#menu ul, #menu li{
+#header ul, #header li{
     padding:0;
     margin:0;
 }
 
-#menu li{
+#header li{
     position: relative;
     float: left;
     list-style: none;
@@ -23,7 +23,7 @@ body{
     padding:0;
 }
 
-#menu li a{
+#header li a{
     width:100px;
     height: 30px;
     display: block;
@@ -34,23 +34,23 @@ body{
     color: white;
 }
 
-#menu ul ul li a{
+#header ul ul li a{
     width: 200px;
     text-align: left;
     padding-left: 10px;
 }
 
-#menu li a:hover{
+#header li a:hover{
     background-color: red;
 }
 
-#menu ul ul{
+#header ul ul{
     position: absolute;
     top: 30px;
     left: 15px;
     visibility: hidden;
 }
 
-#menu ul li:hover ul{
+#header ul li:hover ul{
     visibility: visible;
 }

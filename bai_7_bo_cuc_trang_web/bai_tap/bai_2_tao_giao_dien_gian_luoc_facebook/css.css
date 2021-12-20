@@ -1,0 +1,35 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: SansSerif;
+    color: #333;
+}
+#header{
+    width: 100%;
+}
+#header ul {
+    list-style-type: none;
+    background: cornflowerblue;
+    text-align: center;
+}
+#header ul li{
+    color: #f1f1f1;
+    display: inline-table;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+}
+#header ul li a{
+    color: #f1f1f1;
+    text-decoration: none;
+    display: block;
+}
+#header ul li a:hover {
+    background: #f1f1f1;
+    color: #333;
+}
