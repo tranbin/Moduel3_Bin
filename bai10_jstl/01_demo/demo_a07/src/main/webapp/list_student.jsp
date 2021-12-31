@@ -13,8 +13,8 @@
 </head>
 <body>
 <h2>List Student</h2>
-<table style="width: 700px;" border="1">
-    <tr>
+<table style="width: 700px;" border="1px solid">
+    <tr >
         <th>ID</th>
         <th>Name</th>
         <th>Date Of Birth</th>
