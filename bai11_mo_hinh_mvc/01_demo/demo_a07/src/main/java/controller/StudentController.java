@@ -4,6 +4,7 @@ import model.Student;
 import service.IStudentService;
 import service.impl.StudentService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +17,11 @@ import java.util.List;
 public class StudentController extends HttpServlet {
     //Ép kiểu ngầm định -> DI (module 4)
     private IStudentService iStudentService = new StudentService();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if(action == null) {
-            action ="";
+        if (action == null) {
+            action = "";
         }
         switch (action) {
             case "create": {
@@ -28,23 +30,31 @@ public class StudentController extends HttpServlet {
                 String grade = request.getParameter("grade");
                 String gender = request.getParameter("gender");
                 String dateOfBirth = request.getParameter("dateOfBirth");
-                Student student = new Student(Integer.parseInt(id),name,dateOfBirth,Integer.parseInt(gender),Double.parseDouble(grade));
-                if(iStudentService.createStudent(student)) {
-                    request.setAttribute("msg","Thêm mới thành công");
+                Student student = new Student(Integer.parseInt(id), name, dateOfBirth, Integer.parseInt(gender), Double.parseDouble(grade));
+                if (iStudentService.createStudent(student)) {
+                    request.setAttribute("msg", "Thêm mới thành công");
                     List<Student> studentList = iStudentService.findAll();
                     request.setAttribute("studentList", studentList);
-                    request.getRequestDispatcher("list_student.jsp").forward(request,response);
+                    request.getRequestDispatcher("list_student.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("msg","Thêm mới thất bại");
-                    request.getRequestDispatcher("create_student.jsp").forward(request,response);
+                    request.setAttribute("msg", "Thêm mới thất bại");
+                    request.getRequestDispatcher("create_student.jsp").forward(request, response);
                 }
             }
+            case "delete":{
+                String id = request.getParameter("id");
+                iStudentService.delete(id);
+                List<Student> studentList = iStudentService.findAll();
+                request.setAttribute("listStudent", studentList);
+                request.getRequestDispatcher("list_student.jsp").forward(request, response);
+            }
+            break;
             case "update": {
-               String id = request.getParameter("id");
-               String name = request.getParameter("name");
-               String grade = request.getParameter("grade");
-               iStudentService.save(id,name,grade);
-               response.sendRedirect("/student");
+                String id = request.getParameter("id");
+                String name = request.getParameter("name");
+                String grade = request.getParameter("grade");
+                iStudentService.save(id, name, grade);
+                response.sendRedirect("/student");
             }
         }
     }
@@ -52,18 +62,24 @@ public class StudentController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String action = request.getParameter("action");
-        if(action == null) {
-            action ="";
+        if (action == null) {
+            action = "";
         }
         switch (action) {
             case "create": {
-                request.getRequestDispatcher("create_student.jsp").forward(request,response);
+                request.getRequestDispatcher("create_student.jsp").forward(request, response);
+            }
+            case "delete": {
+                String id = request.getParameter("id");
+                Student student = iStudentService.findById(id);
+                request.setAttribute("student", student);
+                request.getRequestDispatcher("delete.jsp").forward(request, response);
             }
             case "update": {
                 String id = request.getParameter("id");
                 Student student = iStudentService.findById(id);
                 request.setAttribute("student", student);
-                request.getRequestDispatcher("update_student.jsp").forward(request,response);
+                request.getRequestDispatcher("update_student.jsp").forward(request, response);
             }
             default: {
                 List<Student> studentList = iStudentService.findAll();

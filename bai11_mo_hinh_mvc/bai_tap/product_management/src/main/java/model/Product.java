@@ -3,11 +3,19 @@ package model;
 public class Product {
     private Integer id;
     private String name;
-    private double price;
+    private Double price;
     private String description;
     private String grand;
 
     public Product() {
+    }
+
+    public Product(Integer id, String name, Double price, String description, String grand) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.grand = grand;
     }
 
     public Integer getId() {
@@ -26,11 +34,11 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

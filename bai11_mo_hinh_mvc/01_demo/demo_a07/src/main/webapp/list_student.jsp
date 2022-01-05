@@ -53,6 +53,9 @@
                 </c:choose>
             </td>
             <td><a href="/student?action=update&id=${student.id}">Update</a></td>
+            <td>
+                <a href="/student?action=delete&id=${student.id}">Delete</a>
+            </td>
         </tr>
     </c:forEach>
 </table>

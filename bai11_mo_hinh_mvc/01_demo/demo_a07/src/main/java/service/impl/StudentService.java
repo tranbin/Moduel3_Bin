@@ -5,6 +5,7 @@ import repository.IStudentRepository;
 import repository.impl.StudentRepository;
 import service.IStudentService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService implements IStudentService {
@@ -38,4 +39,10 @@ public class StudentService implements IStudentService {
             return true;
         }
     }
+
+    @Override
+    public void delete(String id) {
+        iStudentRepository.remove(id);
+    }
+
 }

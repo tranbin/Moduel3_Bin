@@ -12,4 +12,6 @@ public interface IStudentService {
     void save(String id, String name, String grade);
 
     boolean createStudent(Student student);
+
+    void delete(String id);
 }
