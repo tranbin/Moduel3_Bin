@@ -14,4 +14,6 @@ public interface IProductService {
     void save(String id, String name, String price);
 
     void deleteById(String id);
+
+    Product findByName(String name);
 }

@@ -50,11 +50,22 @@ public class ProductResponsitory implements IProductResponsitory {
     @Override
     public void deleteById(String id) {
         Integer temp = Integer.parseInt(id);
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getId().equals(temp)) {
-                productList.remove(i);
-                break;
+            for (int i = 0; i < productList.size(); i++) {
+                if (productList.get(i).getId().equals(temp)) {
+                    productList.remove(i);
+                    break;
+                }
             }
-        }
+    }
+
+    @Override
+    public Product findByName(String name) {
+       List<Product> productList = displayAll();
+       for (Product value:productList){
+           if (value.getName().equals(name)){
+               return value;
+           }
+       }
+       return null;
     }
 }

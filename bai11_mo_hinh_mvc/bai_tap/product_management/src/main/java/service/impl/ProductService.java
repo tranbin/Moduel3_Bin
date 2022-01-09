@@ -38,7 +38,12 @@ public class ProductService implements IProductService {
 
     @Override
     public void deleteById(String id) {
-iProductResponsitory.deleteById(id);
+        iProductResponsitory.deleteById(id);
+    }
+
+    @Override
+    public Product findByName(String name) {
+        return iProductResponsitory.findByName(name);
     }
 
 

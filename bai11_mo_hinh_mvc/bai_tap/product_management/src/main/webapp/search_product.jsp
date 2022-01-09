@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-
+<form method="post" style="text-align: center">
+    <label>Nhập vào tên sản phẩm bạn mà bạn muốn tìm kiếm</label>
+    <input type="text" name="name">
+    <button type="submit">Tìm kiếm</button>
+</form>
 </body>
 </html>

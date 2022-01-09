@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -51,18 +52,24 @@ public class ProductServlet extends HttpServlet {
                 response.sendRedirect("/product");
             }
             break;
-            case "delete":
+            case "delete": {
                 String id = request.getParameter("id");
                 iProductService.deleteById(id);
-                List<Product> productList =iProductService.findAll();
-                request.setAttribute("productList",productList);
-                request.getRequestDispatcher("display.jsp").forward(request,response);
+                List<Product> productList = iProductService.findAll();
+                request.setAttribute("productList", productList);
+                request.getRequestDispatcher("display.jsp").forward(request, response);
+            }
 
-                break;
+            break;
             case "view":
                 break;
-            case "search":
-                break;
+            case "search": {
+                String name = request.getParameter("name");
+                Product product = iProductService.findByName(name);
+                request.setAttribute("product", product);
+                request.getRequestDispatcher("view.jsp").forward(request, response);
+            }
+            break;
             default:
                 break;
         }
@@ -77,25 +84,30 @@ public class ProductServlet extends HttpServlet {
             case "create": {
                 request.getRequestDispatcher("create_product.jsp").forward(request, response);
             }
-
+            break;
             case "update": {
                 String id = request.getParameter("id");
                 Product product = iProductService.findById(id);
                 request.setAttribute("product", product);
                 request.getRequestDispatcher("update.jsp").forward(request, response);
             }
-
+            break;
             case "delete": {
                 String id = request.getParameter("id");
                 Product product = iProductService.findById(id);
                 request.setAttribute("product", product);
                 request.getRequestDispatcher("delete.jsp").forward(request, response);
             }
-
+            break;
             case "view":
                 break;
-            case "search":
-                break;
+            case "search": {
+                String name = request.getParameter("name");
+                Product product = iProductService.findByName(name);
+                request.setAttribute("product", product);
+                request.getRequestDispatcher("search_product.jsp").forward(request, response);
+            }
+            break;
             default:
                 List<Product> productList = iProductService.findAll();
                 request.setAttribute("productList", productList);
