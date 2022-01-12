@@ -2,7 +2,7 @@ package controller;
 
 import model.User;
 import service.IUserService;
-import service.impl.UserServiceImpl;
+import service.impl.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,89 +10,82 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ControllerServlet", urlPatterns = "/controllerServlet")
+@WebServlet(name = "ControllerServlet", urlPatterns = "/users")
 public class ControllerServlet extends HttpServlet {
-    public IUserService userService = new UserServiceImpl();
+    private IUserService iUserService = new UserService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action){
             case "create":{
-                String id = request.getParameter("id");
-                String name = request.getParameter("name");
-                String email = request.getParameter("email");
-                String country = request.getParameter("country");
-                userService.create(id, name, email, country);
-                ArrayList<User> list = new ArrayList<>();
-                list = userService.display();
-                request.setAttribute("list", list);
-                request.getRequestDispatcher("/display.jsp").forward(request, response);
-                response.sendRedirect("/display.jsp");
+                    String id =request.getParameter("id");
+                    String name =request.getParameter("name");
+                    String email =request.getParameter("email");
+                    String country =request.getParameter("country");
+                    User user = new User(Integer.parseInt(id),name,email,country);
+                    iUserService.createUser(user);
+                    List<User> listUser = iUserService.findAll();
+                    request.setAttribute("listUser",listUser);
+                    request.getRequestDispatcher("display.jsp").forward(request,response);
+
             }
-            case "update1":{
-                String id = request.getParameter("id");
-                String name = request.getParameter("name");
-                String email = request.getParameter("email");
-                String country = request.getParameter("country");
-                userService.update(id, name, email, country);
-                ArrayList<User> list = new ArrayList<>();
-                list = userService.display();
-                request.setAttribute("list", list);
-                request.getRequestDispatcher("/display.jsp").forward(request, response);
-                response.sendRedirect("/display.jsp");
+            case "update":{
+                String id =request.getParameter("id");
+                String name =request.getParameter("name");
+                String email =request.getParameter("email");
+                String country =request.getParameter("country");
+                iUserService.save(id,name,email,country);
+                response.sendRedirect("users");
             }
             case "delete":{
                 String id = request.getParameter("id");
-                userService.delete(id);
-                ArrayList<User> list = new ArrayList<>();
-                list = userService.display();
-                request.setAttribute("list", list);
-                request.getRequestDispatcher("/display.jsp").forward(request, response);
-                response.sendRedirect("/display.jsp");
+                iUserService.deleteById(id);
+                List<User> userList = iUserService.findAll();
+                request.setAttribute("userList", userList);
+                request.getRequestDispatcher("display.jsp").forward(request, response);
+            }
+            case "search":{
+                String country = request.getParameter("country");
+                User user = iUserService.findByCountry(country);
+                request.setAttribute("user", user);
+                request.getRequestDispatcher("view.jsp").forward(request, response);
             }
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        if (action == null){
+            action = "";
+        }
         switch (action){
-            case "display":{
-                ArrayList<User> list = new ArrayList<>();
-                list = userService.display();
-                request.setAttribute("list", list);
-                request.getRequestDispatcher("/display.jsp").forward(request, response);
-                response.sendRedirect("/display.jsp");
-            }
+
             case "create":{
-                request.getRequestDispatcher("/create.jsp").forward(request, response);
-                response.sendRedirect("/create.jsp");
+                request.getRequestDispatcher("create.jsp").forward(request,response);
             }
             case "update":{
-                ArrayList<User> list = new ArrayList<>();
-                list = userService.display();
-                request.setAttribute("list", list);
-                request.getRequestDispatcher("/update.jsp").forward(request, response);
-                response.sendRedirect("/update.jsp");
+                String id =request.getParameter("id");
+                User user = iUserService.findById(id);
+                request.setAttribute("user",user);
+                request.getRequestDispatcher("update.jsp").forward(request,response);
             }
             case "delete":{
-                ArrayList<User> list = new ArrayList<>();
-                list = userService.display();
-                request.setAttribute("list", list);
-                request.getRequestDispatcher("/delete.jsp").forward(request, response);
-                response.sendRedirect("/delete.jsp");
-            }
-            case "update1":{
                 String id = request.getParameter("id");
-                User user = userService.findById(id);
+                User user = iUserService.findById(id);
                 request.setAttribute("user", user);
-                request.getRequestDispatcher("/update_input.jsp").forward(request, response);
-                response.sendRedirect("/update_input.jsp");
+                request.getRequestDispatcher("delete.jsp").forward(request, response);
             }
-            case "index":{
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-                response.sendRedirect("/index.jsp");
+            case "search":{
+                String country = request.getParameter("country");
+                User user = iUserService.findByCountry(country);
+                request.setAttribute("user", user);
+                request.getRequestDispatcher("search.jsp").forward(request, response);
+            }
+            default: {
+                List<User> userList = iUserService.findAll();
+                request.setAttribute("userList", userList);
+                request.getRequestDispatcher("/display.jsp").forward(request, response);
             }
         }
     }

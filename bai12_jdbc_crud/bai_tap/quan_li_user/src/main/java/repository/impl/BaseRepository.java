@@ -5,14 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BaseRepository {
-    private String jdbcUrl ="jdbc:mysql://localhost:3306/user_management";
-    private String username ="root";
-    private String password ="123456";
+    private String jdbcUrl = "jdbc:mysql://localhost:3306/demo";
+    private String username = "root";
+    private String password = "123456";
     private Connection connection;
+
     public BaseRepository() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.connection = DriverManager.getConnection(jdbcUrl,username,password);
+            this.connection = DriverManager.getConnection(jdbcUrl, username, password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

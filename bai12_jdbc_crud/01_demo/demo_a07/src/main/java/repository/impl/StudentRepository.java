@@ -18,11 +18,7 @@ public class StudentRepository implements IStudentRepository {
     public List<Student> findAll() {
         List<Student> studentList = new ArrayList<>();
         try {
-            //Statement
-//            Statement statement = this.baseRepository.getConnection().createStatement();
-////            statement.executeQuery("select * from student where name ="+name);
 
-            //PreparedStatement
             PreparedStatement preparedStatement = this.baseRepository.getConnection()
                     .prepareStatement("select * from student");
             //executeQuery : select
