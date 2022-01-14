@@ -104,7 +104,8 @@ public class UserRepository implements IUserRepository {
         List<User> userList = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = this.baseRepository.getConnection()
-                    .prepareStatement("select * from users where country like '%?'");
+                    .prepareStatement("select * from users where country like ?");
+            preparedStatement.setString(1,"%"+country+"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             User user;
             while (resultSet.next()) {

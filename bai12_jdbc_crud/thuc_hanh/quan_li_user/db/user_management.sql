@@ -78,4 +78,7 @@ insert into Permision(id, name) values(4, 'view');
 
 select * from users;
 select * from User_Permision;
+select * from EMPLOYEE;
+
+
 
