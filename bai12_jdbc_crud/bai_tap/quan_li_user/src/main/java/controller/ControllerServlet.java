@@ -47,8 +47,8 @@ public class ControllerServlet extends HttpServlet {
             }
             case "search":{
                 String country = request.getParameter("country");
-                User user = iUserService.findByCountry(country);
-                request.setAttribute("user", user);
+                List<User> userList = iUserService.findByCountry(country);
+                request.setAttribute("userList", userList);
                 request.getRequestDispatcher("view.jsp").forward(request, response);
             }
         }
@@ -78,8 +78,8 @@ public class ControllerServlet extends HttpServlet {
             }
             case "search":{
                 String country = request.getParameter("country");
-                User user = iUserService.findByCountry(country);
-                request.setAttribute("user", user);
+                List<User> userList = iUserService.findByCountry(country);
+                request.setAttribute("userList", userList);
                 request.getRequestDispatcher("search.jsp").forward(request, response);
             }
             default: {

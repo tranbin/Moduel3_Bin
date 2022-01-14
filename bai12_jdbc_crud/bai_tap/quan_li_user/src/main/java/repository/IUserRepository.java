@@ -17,5 +17,5 @@ public interface IUserRepository {
 
     void deleteById(String id);
 
-    User findByCountry(String country);
+    List<User> findByCountry(String country);
 }

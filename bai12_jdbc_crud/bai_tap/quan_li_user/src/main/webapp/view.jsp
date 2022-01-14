@@ -11,23 +11,29 @@
     <title>Title</title>
 </head>
 <body>
-<table style="text-align: center" border="1">
+<table border="1" width="600px">
     <tr>
-        <td>Id: </td>
-        <td>${requestScope["user"].getId()}</td>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Country</th>
     </tr>
-    <tr>
-        <td>Name: </td>
-        <td>${requestScope["user"].getName()}</td>
-    </tr>
-    <tr>
-        <td>Email: </td>
-        <td>${requestScope["user"].getEmail()}</td>
-    </tr>
-    <tr>
-        <td>Country </td>
-        <td>${requestScope["user"].getCountry()}</td>
-    </tr>
+    <c:forEach var="userList" items="${userList}">
+        <tr>
+            <td>
+                <c:out value="${userList.id}"></c:out>
+            </td>
+            <td>
+                <c:out value="${userList.name}"></c:out>
+            </td>
+            <td>
+                <c:out value="${userList.email}"></c:out>
+            </td>
+            <td>
+                <c:out value="${userList.country}"></c:out>
+            </td>
+        </tr>
+    </c:forEach>
 </table>
 </body>
 </html>
