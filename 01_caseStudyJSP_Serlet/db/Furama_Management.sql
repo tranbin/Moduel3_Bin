@@ -1,3 +1,4 @@
+
 create database Furama_Managerment ; 
 use Furama_Managerment ; 
 
@@ -77,6 +78,7 @@ customer_address varchar(45),
 customer_type_id int,
 foreign key(customer_type_id) references customer_type(customer_type_id)
 );
+
 
 create table employee(
 employee_id int primary key auto_increment, 

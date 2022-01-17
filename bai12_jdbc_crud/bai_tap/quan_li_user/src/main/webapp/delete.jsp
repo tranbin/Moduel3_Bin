@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-<h2>Delete Vehicle</h2>
+<h2>Delete Users</h2>
 <form method="post">
     <label>Are you sure</label>
     <c:out value="${user.id}"></c:out>

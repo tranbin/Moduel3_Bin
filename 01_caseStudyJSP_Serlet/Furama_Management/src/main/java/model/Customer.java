@@ -5,7 +5,7 @@ public class Customer {
     private int customerTypeId;
     private String customerName;
     private String customerBirthday;
-    private String customerGender;
+    private int customerGender;
     private String customerIdCard;
     private String customerPhone;
     private String customerEmail;
@@ -14,7 +14,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customerId, int customerTypeId, String customerName, String customerBirthday, String customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
+    public Customer(int customerId, int customerTypeId, String customerName, String customerBirthday, int customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
         this.customerId = customerId;
         this.customerTypeId = customerTypeId;
         this.customerName = customerName;
@@ -58,11 +58,11 @@ public class Customer {
         this.customerBirthday = customerBirthday;
     }
 
-    public String getCustomerGender() {
+    public int getCustomerGender() {
         return customerGender;
     }
 
-    public void setCustomerGender(String customerGender) {
+    public void setCustomerGender(int customerGender) {
         this.customerGender = customerGender;
     }
 
