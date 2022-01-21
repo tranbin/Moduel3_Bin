@@ -99,7 +99,7 @@ public class EmployeeServlet extends HttpServlet {
                 break;
             }
             case "delete": {
-                String id = request.getParameter("id");
+                String id = request.getParameter("employeeId");
                 Employee employee = iEmployeeService.findById(id);
                 request.setAttribute("employee", employee);
                 request.getRequestDispatcher("/employee/delete_employee.jsp").forward(request, response);

@@ -73,7 +73,7 @@
                 <c:out value="${employee.username}"></c:out>
             </td>
             <td><a href="/employee?action=update&id=${employee.id}">Update</a></td>
-            <td><a href="/employee?action=delete&id=${employee.id}">Delete</a></td>
+            <td><a href="/employee?action=delete&employeeId=${employee.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>

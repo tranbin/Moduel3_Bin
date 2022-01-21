@@ -85,7 +85,7 @@ public class EmployeeRepository implements IEmployeeRepository {
                      String typeId, String position, String education, String division, String username) {
         try {
             PreparedStatement preparedStatement = this.baseRepository.getConnection()
-                    .prepareStatement("update customer set employee_name = ?," +
+                    .prepareStatement("update employee set employee_name = ?," +
                             " employee_birthday = ? , employee_id_card = ?, employee_salary = ?, " +
                             "employee_phone = ?, employee_email = ?, employee_address = ?," +
                             " employee_type_id = ? , position_id = ?, education_degree_id = ?, division_id = ?," +
@@ -126,7 +126,7 @@ public class EmployeeRepository implements IEmployeeRepository {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = this.baseRepository.getConnection()
-                    .prepareStatement("insert into employee(employee_name,employee_birthday,employee_id_card,employee_salary," +
+                        .prepareStatement("insert into employee(employee_name,employee_birthday,employee_id_card,employee_salary," +
                             "employee_phone,employee_email,employee_address,employee_type_id," +
                             "position_id,education_degree_id,division_id,username) value(?,?,?,?,?,?,?,?,?,?,?,?)");
             preparedStatement.setString(1, employee.getName());

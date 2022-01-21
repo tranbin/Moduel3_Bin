@@ -91,7 +91,7 @@ public class CustomerServlet extends HttpServlet {
                 break;
             }
             case "delete": {
-                String id = request.getParameter("id");
+                String id = request.getParameter("customerId");
                 Customer customer = iCustomerService.findById(id);
                 request.setAttribute("customer", customer);
                 request.getRequestDispatcher("/customer/delete_customer.jsp").forward(request, response);

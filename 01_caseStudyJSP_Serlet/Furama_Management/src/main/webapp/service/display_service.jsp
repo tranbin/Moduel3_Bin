@@ -16,9 +16,7 @@
 </style>
 <body>
 <h1>List Serivce</h1>
-
 <h3><a href="/serviceFurama?action=create">Create new Service</a></h3></br>
-
 <table border="1px" width="600px" style="text-align: center;">
     <tr>
         <th>Id</th>

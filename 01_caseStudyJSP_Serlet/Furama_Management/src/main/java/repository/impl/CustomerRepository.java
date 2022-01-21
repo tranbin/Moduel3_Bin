@@ -74,7 +74,8 @@ public class CustomerRepository implements ICustomerRepository {
             PreparedStatement preparedStatement = this.baseRepository.getConnection()
                     .prepareStatement("update customer set customer_type_id = ?," +
                             " customer_name = ? , customer_birthday = ?, customer_gender = ?, " +
-                            "customer_id_card = ?, customer_phone = ?, customer_email = ?, customer_address = ? where customer_id = ?");
+                            "customer_id_card = ?, customer_phone = ?, customer_email = ?, " +
+                            "customer_address = ? where customer_id = ?");
             preparedStatement.setInt(9, Integer.parseInt(customerId));
             preparedStatement.setInt(1, Integer.parseInt(customerTypeId));
             preparedStatement.setString(2, customerName);
