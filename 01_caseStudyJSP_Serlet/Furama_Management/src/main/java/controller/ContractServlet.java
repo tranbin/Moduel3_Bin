@@ -1,8 +1,6 @@
 package controller;
 
 import model.Contract;
-import model.Customer;
-import model.ServiceFurama;
 import service.IContractService;
 import service.impl.ContractService;
 

@@ -41,31 +41,31 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public Customer findById(String id) {
-        PreparedStatement preparedStatement = null;
-        try {
-            preparedStatement = this.baseRepository.getConnection()
-                    .prepareStatement("select * from customer where customer_id = ?");
-            preparedStatement.setString(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            Customer customer = null;
-            while (resultSet.next()) {
-                customer = new Customer();
-                customer.setCustomerId(resultSet.getInt("customer_id"));
-                customer.setCustomerTypeId(resultSet.getInt("customer_type_id"));
-                customer.setCustomerName(resultSet.getString("customer_name"));
-                customer.setCustomerBirthday(resultSet.getString("customer_birthday"));
-                customer.setCustomerGender(resultSet.getInt("customer_gender"));
-                customer.setCustomerIdCard(resultSet.getString("customer_id_card"));
-                customer.setCustomerPhone(resultSet.getString("customer_phone"));
-                customer.setCustomerEmail(resultSet.getString("customer_email"));
-                customer.setCustomerAddress(resultSet.getString("customer_address"));
-                break;
+            PreparedStatement preparedStatement = null;
+            try {
+                preparedStatement = this.baseRepository.getConnection()
+                        .prepareStatement("select * from customer where customer_id = ?");
+                preparedStatement.setString(1, id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                Customer customer = null;
+                while (resultSet.next()) {
+                    customer = new Customer();
+                    customer.setCustomerId(resultSet.getInt("customer_id"));
+                    customer.setCustomerTypeId(resultSet.getInt("customer_type_id"));
+                    customer.setCustomerName(resultSet.getString("customer_name"));
+                    customer.setCustomerBirthday(resultSet.getString("customer_birthday"));
+                    customer.setCustomerGender(resultSet.getInt("customer_gender"));
+                    customer.setCustomerIdCard(resultSet.getString("customer_id_card"));
+                    customer.setCustomerPhone(resultSet.getString("customer_phone"));
+                    customer.setCustomerEmail(resultSet.getString("customer_email"));
+                    customer.setCustomerAddress(resultSet.getString("customer_address"));
+                    break;
+                }
+                return customer;
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            return customer;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+            return null;
     }
 
     @Override

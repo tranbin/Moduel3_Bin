@@ -1,0 +1,21 @@
+package service;
+
+import model.Customer;
+import model.CustomerType;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public interface ICustomerService {
+    ArrayList<Customer> display();
+
+    void create(String id, String name, String dateOfBirth, String gender, String cmnd, String phone, String email, String address, String id_cusomerType);
+
+    void delete(String id);
+
+    void update(String id, String cmnd, String phone, String email, String address, String id_cusomerType);
+
+    List<Customer> search(String name);
+
+    List<CustomerType> findCustomerType();
+}

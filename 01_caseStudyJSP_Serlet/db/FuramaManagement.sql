@@ -89,6 +89,7 @@ customer_type_id int primary key auto_increment,
 customer_type_name varchar(45));
 
 insert into customer_type values (2,"Bin");
+insert into customer_type values (3,"Bin1");
 
 create table customer(
 customer_id int primary key auto_increment, 

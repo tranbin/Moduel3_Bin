@@ -1,6 +1,5 @@
 package repository.impl;
 
-import model.Customer;
 import model.Employee;
 import repository.IEmployeeRepository;
 

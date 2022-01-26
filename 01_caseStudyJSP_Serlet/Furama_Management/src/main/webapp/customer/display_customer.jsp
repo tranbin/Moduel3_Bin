@@ -33,7 +33,9 @@
                 <c:out value="${customer.customerId}"></c:out>
             </td>
             <td>
-                <c:out value="${customer.customerTypeId}"></c:out>
+                <c:out value="${customer.customerTypeId}">
+
+                </c:out>
             </td>
             <td>
                 <c:out value="${customer.customerName}"></c:out>

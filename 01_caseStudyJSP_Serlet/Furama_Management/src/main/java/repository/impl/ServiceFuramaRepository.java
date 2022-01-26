@@ -1,9 +1,7 @@
 package repository.impl;
 
-import model.Customer;
 import model.ServiceFurama;
 import repository.IServiceFuramaRepository;
-import service.impl.FuramaService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<h2>Delete Vehicle</h2>
+<h2>Delete Customer</h2>
 <form method="post">
     <label>Are you sure</label>
     <c:out value="${customer.customerId}"></c:out>

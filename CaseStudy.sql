@@ -1,5 +1,5 @@
-create database FuramaManagerment ; 
-use FuramaManagerment ;
+create database FuramaManagerment1 ; 
+use FuramaManagerment1 ;
 create table vi_tri(
 ma_vi_tri int primary key auto_increment,
 ten_vi_tri varchar(45));
@@ -51,6 +51,8 @@ email varchar(45),
 dia_chi varchar(45),
 ma_loai_khach int,
 foreign key(ma_loai_khach) references loai_khach(ma_loai_khach));
+
+select*from khach_hang inner join loai_khach on khach_hang.ma_loai_khach = loai_khach.ma_loai_khach;
 
 create table kieu_thue(
 ma_kieu_thue int primary key auto_increment,
